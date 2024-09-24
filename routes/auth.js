@@ -33,4 +33,30 @@ router.post("/register", async (req, res) => {
     }
 });
 
+
+// Login
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        // Kiểm tra xem email có tồn tại không
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ message: "Email không tồn tại" });
+        }
+
+        // So sánh mật khẩu đã nhập với mật khẩu đã mã hóa trong cơ sở dữ liệu
+        const validPassword = await bcrypt.compare(password, user.password);
+        if (!validPassword) {
+            return res.status(400).json({ message: "Mật khẩu không chính xác" });
+        }
+
+        // Trả về thông tin người dùng nếu đăng nhập thành công
+        res.status(200).json({ message: "Đăng nhập thành công", user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Đã xảy ra lỗi" });
+    }
+});
+
 module.exports = router;
