@@ -1,69 +1,83 @@
 .rightbar {
-    flex: 3.5;
-    margin-top: 20px;
-  }
-  
-  .rightbarWrapper {
-    padding: 20px 20px 0 0;
-  }
-  
-  .birthdayContainer {
-    display: flex;
-    align-items: center;
-  }
-  
-  .birthdayImg {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-  }
+  flex: 2;
+}
 
-  .birthdayText {
-    font-weight: 300;
-    font-size: 15px;
-  }
-  .rightbarAd {
-    width: 70%;
-    border-radius: 10px;
-    margin: 30px 0;
-  }
+.rightbarWrapper {
+  padding: 20px 20px 0 0;
+}
+
+.birthdayContainer {
+  display: flex;
+  align-items: center;
+}
+
+.birthdayImg {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.birthdayText {
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.rightbarAd {
+  width: 100%;
+  border-radius: 10px;
+  margin: 30px 0;
+}
+
+.rightbarTitle{
+    margin-bottom: 20px;
+}
 
 .rightbarFriendList {
   padding: 0;
   margin: 0;
   list-style: none;
 }
+
 .rightbarTitle{
-  /* font-size: 18px;
-  font-weight: 500; */
+  font-size: 18px;
+  font-weight: 500;
   margin-bottom: 10px;
 }
-.rightbarFriend {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;    
+
+.rightbarInfo{
+  margin-bottom: 30px;
 }
-.rightbarProfileImgContainer {
-    margin-right: 10px;
-    position: relative;
+
+.rightbarInfoItem{
+  margin-bottom: 10px;
 }
-.rightbarProfileImg {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+
+.rightbarInfoKey{
+  font-weight: 500;
+  margin-right: 15px;
+  color: #555;
 }
-.rightbaronline{
-    width: 12px;
-    height: 12px;
-    border-radius: 50px;
-    background-color: aquamarine;
-    position: absolute;
-    top: -2px;
-    margin-left: -7;
-    border: 2px solid white;
+
+.rightbarInfoValue{
+  font-weight: 300;
 }
-.rightbarUsername {
-    flex: 2;
-    font-weight: 500;
+
+.rightbarFollowings{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.rightbarFollowing{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.rightbarFollowingImg{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
 }

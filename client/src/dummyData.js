@@ -1,7 +1,7 @@
 export const Users = [
     {
       id:1,
-      profilePicture: "assets/person/1.jpeg",
+      profilePicture: "https://i.pinimg.com/474x/c9/07/f6/c907f645dcef11062bdf712205d0c3dd.jpg",
       username: "Safak Kocaoglu",
     },
     {
@@ -55,7 +55,7 @@ export const Users = [
     {
       id: 1,
       desc: "Love For All, Hatred For None.",
-      photo: "assets/post/1.jpeg",
+      photo: "https://greyscalegorilla.com/wp-content/uploads/2020/07/RC2.124.Still001-993x800.jpg",
       date: "5 mins ago",
       userId: 1,
       like: 32,
