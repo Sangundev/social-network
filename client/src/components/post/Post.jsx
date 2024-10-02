@@ -1,16 +1,34 @@
 import "./post.css";
 import { MoreVert } from "@mui/icons-material";
-import { Users } from "../../dummyData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { formatDistanceToNow } from 'date-fns'; // Import hàm formatDistanceToNow
 
 export default function Post({ post }) {
-  const [like,setLike] = useState(post.like)
-  const [isLiked,setIsLiked] = useState(false)
+  const [like, setLike] = useState(post.likes.length);
+  const [isLiked, setIsLiked] = useState(false);
+  const [user, setUser] = useState({});
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  const likeHandler =()=>{
-    setLike(isLiked ? like-1 : like+1)
-    setIsLiked(!isLiked)
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get(`users/${post.userId}`);
+        console.log(res);
+        setUser(res.data);
+      } catch (err) {
+        console.error("Error fetching posts:", err);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  const likeHandler = () => {
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
   }
+
   return (
     <div className="post">
       <div className="postWrapper">
@@ -18,13 +36,16 @@ export default function Post({ post }) {
           <div className="postTopLeft">
             <img
               className="postProfileImg"
-              src={Users.filter((u) => u.id === post?.userId)[0].profilePicture}
+              src={user.profilePicture}
               alt=""
             />
             <span className="postUsername">
-              {Users.filter((u) => u.id === post?.userId)[0].username}
+              {user.username}
             </span>
-            <span className="postDate">{post.date}</span>
+            {/* Sử dụng formatDistanceToNow để hiển thị thời gian */}
+            <span className="postDate">
+              {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}
+            </span>
           </div>
           <div className="postTopRight">
             <MoreVert />
@@ -32,7 +53,7 @@ export default function Post({ post }) {
         </div>
         <div className="postCenter">
           <span className="postText">{post?.desc}</span>
-          <img className="postImg" src={post.photo} alt="" />
+          <img className="postImg" src={post.img} alt="" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
